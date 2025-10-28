@@ -42,7 +42,7 @@
   });
 </script>
 
-<div class="h-[100vh] flex items-center flex-col gap-4 justify-center">
+<div class="h-screen flex items-center flex-col gap-4 justify-center">
   <h1 class="text-center font-bold font-title text-5xl">
     L'histoire des contes commence ici !
   </h1>
@@ -72,7 +72,6 @@
 <div class="h-[300vh] flex items-center justify-center px-8">
   <h2 class="text-center font-semibold font-title text-4xl">
     Plongez dans un monde où l'imagination n'a pas de limites et où chaque
-    histoire vous transporte vers des horizons insoupçonnés.
+    histoire vous transporte vers des horizons insoupçonnés !
   </h2>
 </div>
-<div></div>
