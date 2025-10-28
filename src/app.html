@@ -1,11 +1,30 @@
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    %sveltekit.head%
+    <style>
+      /* Splash loader styles */
+      #app-loader {
+        position: fixed;
+        inset: 0;
+		gap: 1rem;
+        display: flex;
+		flex-direction: column;
+		justify-content: center;
+        place-items: center;
+        background: #ffffff;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div id="app-loader" aria-live="polite" role="status">
+      <img class="w-100 h-auto -m-20" src="/anim-picto-chargement.gif" alt="Chargement..." />
+	  <p class="font-regulard text-2xl">Chargement des contes, veuillez patienter...</p>
+    </div>
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
 </html>
