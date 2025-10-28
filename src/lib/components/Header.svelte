@@ -1,13 +1,29 @@
 <script>
-  import { page } from "$app/stores"; // optionnel, si tu veux savoir sur quelle page tu es
+  import logo from "$lib/assets/brand-la-carte-des-contes.png";
 </script>
 
 <header class="bg-white shadow-md px-8 py-4 flex justify-between items-center">
-  <a href="/" class="text-xl font-bold text-gray-800">La Carte des Contes</a>
-
-  <nav class="flex gap-6">
-    <a href="/" class="hover:text-blue-600">Accueil</a>
-    <a href="/chapitres" class="hover:text-blue-600">Chapitres</a>
-    <a href="/contact" class="hover:text-blue-600">Contact</a>
+  <nav class="flex gap-10 justify-between items-center w-full">
+    <img src={logo} alt="La Carte des Contes" class="h-10" />
+    <a
+      href="/"
+      class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
+      >Origine des contes</a
+    >
+    <a
+      href="/chapitres"
+      class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
+      >Bibliothèque interactive</a
+    >
+    <a
+      href="/contact"
+      class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
+      >Contexte</a
+    >
+    <a
+      href="/contact"
+      class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
+      >Créer ton propre compte</a
+    >
   </nav>
 </header>
