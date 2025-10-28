@@ -1,12 +1,15 @@
 <script>
   import Brand from "$lib/assets/brand-la-carte-des-contes.png";
   import { onMount } from "svelte";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger);
+  // Important: gsap and its ScrollTrigger plugin rely on the browser (window/document).
+  // Import and register them only on the client inside onMount to avoid SSR errors
+  // that would cause a 500 in production.
+  onMount(async () => {
+    const { gsap } = await import("gsap");
+    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    gsap.registerPlugin(ScrollTrigger);
 
-  onMount(() => {
     const bloc = document.querySelector("#bloc-video");
     if (!bloc) return;
 
@@ -38,7 +41,7 @@
       tl.to(bloc, { scale: 1 }).to(bloc, { scale: 0.95 });
     });
 
-    return () => ctx.revert(); // cleanup quand la page se démonte
+    return () => ctx.revert();
   });
 </script>
 
