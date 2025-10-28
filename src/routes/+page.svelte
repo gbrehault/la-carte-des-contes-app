@@ -42,7 +42,7 @@
   });
 </script>
 
-<div class="h-[100vh] flex items-center flex-col gap-4 justify-center">
+<div class="h-screen flex items-center flex-col gap-4 justify-center">
   <h1 class="text-center font-bold font-title text-5xl">
     L'histoire des contes commence ici !
   </h1>
