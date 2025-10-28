@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Header from "$lib/components/Header/+page.svelte";
+  import Header from "$lib/components/Header.svelte";
   import favicon from "$lib/assets/favicon.svg";
   import { onMount } from "svelte";
   import { afterNavigate } from "$app/navigation";
@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="/fonts/font.css" />
   <title>La carte des contes</title>
 </svelte:head>
+
 <Header />
 
 {@render children?.()}
