@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colors */
+
+  --color-bg: #ffffff;
+  --color-font: #111111;
+
+  /* Fonts Family */
+  --font-title: "Satoshi", sans-serif;
+  --font-sb: "Satoshi", sans-serif;
+  --font-texte: "Satoshi", sans-serif;
+
+  /* Fonts Weight  */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-bold: 700;
+}
+body {
+  font-family: "Satoshi", sans-serif !important;
+  font-weight: var(--weight-regular);
+  background-color: var(--color-bg);
+  color: var(--color-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
