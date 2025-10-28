@@ -72,6 +72,6 @@
 <div class="h-[300vh] flex items-center justify-center px-8">
   <h2 class="text-center font-semibold font-title text-4xl">
     Plongez dans un monde où l'imagination n'a pas de limites et où chaque
-    histoire vous transporte vers des horizons insoupçonnés.
+    histoire vous transporte vers des horizons insoupçonnés !
   </h2>
 </div>
