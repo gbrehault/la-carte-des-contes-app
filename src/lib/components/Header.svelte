@@ -62,22 +62,22 @@
     <div class="flex items-center">
       <div class="flex flex-col gap-4 mr-25">
         <a
-          href=""
+          href="/"
           class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
           >Origine des contes</a
         >
         <a
-          href=""
+          href="/"
           class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
           >Bibliothèque interactive</a
         >
         <a
-          href=""
+          href="/"
           class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
           >Contexte</a
         >
         <a
-          href=""
+          href="/"
           class="font-bold transition-all ease-in 0.7 hover:text-hover-text"
           >Créer ton propre compte</a
         >
