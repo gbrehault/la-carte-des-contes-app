@@ -3,59 +3,63 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
+  import { browser } from "$app/environment";
 
   let section: HTMLElement | null = null;
   let video: HTMLVideoElement | null = null;
 
   onMount(() => {
-    const bloc = document.getElementById("bloc-video") as HTMLElement | null;
-    if (!bloc || !section || !video) return;
+    if (!browser) return; // sécurité SSR
 
-    // État initial : léger zoom + coins arrondis (seront animés)
-    gsap.set(bloc, {
-      scale: 1,
-      transformOrigin: "center center",
-    });
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!section || !video) return;
 
     const init = () => {
       const dur = video!.duration;
       if (!dur || !isFinite(dur)) return;
 
-      // Timeline pilotée par le scroll
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section!,
           start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
+          end: () => "+=" + (section!.scrollHeight - window.innerHeight),
+          scrub: true,
+          invalidateOnRefresh: true,
           // markers: true,
         },
       });
 
-      // 1) Le scroll avance la vidéo
+      const st = tl.scrollTrigger!;
+
+      // 🎥 Lecture de la vidéo en fonction du scroll
       tl.to(
         {},
         {
-          duration: 2,
+          duration: 2, // adapte selon ton scroll total
           ease: "none",
           onUpdate: () => {
-            const p = tl.progress(); // 0..1
+            const p = st.progress; // 0..1
             video!.currentTime = p * dur;
-            console.log(p);
           },
         },
         0
       );
-    }; // <-- fermeture de init ICI ✅
+
+      // (Optionnel) Action à la fin : tu peux ajouter du texte, un fondu, etc.
+      tl.call(
+        () => {
+          console.log("Vidéo terminée !");
+        },
+        [],
+        1
+      );
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+    };
+
     if (video!.readyState >= 1) init();
     else video!.addEventListener("loadedmetadata", init, { once: true });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((s) => s.kill());
-      gsap.killTweensOf([bloc, video]);
-    };
   });
 </script>
 
