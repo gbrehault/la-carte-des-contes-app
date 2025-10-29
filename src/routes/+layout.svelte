@@ -40,6 +40,6 @@
   <title>La carte des contes</title>
 </svelte:head>
 
-<Header />
+<!-- <Header /> -->
 
 {@render children?.()}
