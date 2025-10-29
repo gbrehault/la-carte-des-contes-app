@@ -7,7 +7,23 @@
   --color-font: #111111;
   --color-light: #ebeae8;
   --color-dark: #5f5f5f;
+
+  /* Colors CChaperon Rouge */
+
   --color-red: #d92626;
+
+  /* Colors Alice */
+
+  --color-alice-light: #3a8194;
+  --color-alice-dark: #10657d;
+  /* Colors Peter */
+
+  --color-peter-light: #3b5220;
+  --color-peter-dark: #23380b;
+  /* Colors Barbe */
+
+  --color-barbe-light: #1a3156;
+  --color-barbe-dark: #0d1c34;
 
   /* Fonts Family */
   --font-title: "Almendra", serif;
