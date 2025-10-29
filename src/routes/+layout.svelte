@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Header from "$lib/components/Header.svelte";
   import favicon from "$lib/assets/favicon.svg";
   import { onMount } from "svelte";
   import { afterNavigate } from "$app/navigation";
@@ -35,11 +34,16 @@
 </script>
 
 <svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Aleo:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="icon" href={favicon} />
   <link rel="stylesheet" href="/fonts/font.css" />
   <title>La carte des contes</title>
 </svelte:head>
-
 <!-- <Header /> -->
 
 {@render children?.()}

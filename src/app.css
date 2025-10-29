@@ -3,14 +3,16 @@
 @theme {
   /* Colors */
 
-  --color-bg: #ffffff;
+  --color-bg: #f4f2f0;
   --color-font: #111111;
-  --color-hover-text: #a4a4a4;
+  --color-light: #ebeae8;
+  --color-dark: #5f5f5f;
+  --color-red: #d92626;
 
   /* Fonts Family */
-  --font-title: "Satoshi", sans-serif;
-  --font-sb: "Satoshi", sans-serif;
-  --font-texte: "Satoshi", sans-serif;
+  --font-title: "Almendra", serif;
+  --font-sb: "Aleo", serif;
+  --font-texte: "Aleo", serif;
 
   /* Fonts Weight  */
   --weight-light: 300;
@@ -28,10 +30,8 @@
   --font-size-5xl: 3rem; /* 48px */
 }
 body {
-  font-family: "Satoshi", sans-serif !important;
-  font-weight: var(--weight-regular);
   background-color: var(--color-bg);
-  color: var(--color-font);
+  color: var(--color-dark);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
