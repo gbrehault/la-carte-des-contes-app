@@ -1,107 +1,43 @@
 <script lang="ts">
-  import Brand from "$lib/assets/brand-la-carte-des-contes.png";
-  import { onMount } from "svelte";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { browser } from "$app/environment";
-
-  let section: HTMLElement | null = null;
-  let video: HTMLVideoElement | null = null;
-
-  onMount(() => {
-    if (!browser) return; // sécurité SSR
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    if (!section || !video) return;
-
-    const init = () => {
-      const dur = video!.duration;
-      if (!dur || !isFinite(dur)) return;
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section!,
-          start: "top top",
-          end: () => "+=" + (section!.scrollHeight - window.innerHeight),
-          scrub: true,
-          invalidateOnRefresh: true,
-          // markers: true,
-        },
-      });
-
-      const st = tl.scrollTrigger!;
-
-      // 🎥 Lecture de la vidéo en fonction du scroll
-      tl.to(
-        {},
-        {
-          duration: 2, // adapte selon ton scroll total
-          ease: "none",
-          onUpdate: () => {
-            const p = st.progress; // 0..1
-            video!.currentTime = p * dur;
-          },
-        },
-        0
-      );
-
-      // (Optionnel) Action à la fin : tu peux ajouter du texte, un fondu, etc.
-      tl.call(
-        () => {
-          console.log("Vidéo terminée !");
-        },
-        [],
-        1
-      );
-
-      requestAnimationFrame(() => ScrollTrigger.refresh());
-    };
-
-    if (video!.readyState >= 1) init();
-    else video!.addEventListener("loadedmetadata", init, { once: true });
-  });
+  import Logo from "$lib/assets/logo_la_carte_des_contes_dark.png";
 </script>
 
-<!-- Intro -->
-<div class="h-screen flex items-center flex-col gap-4 justify-center">
-  <h1 class="text-center font-bold font-title text-5xl">
-    L'histoire des contes commence ici !
-  </h1>
-  <p class="text-center font-light font-texte text-2xl">
-    Découvrez des univers magiques où chaque conte prend vie à travers des
-    illustrations captivantes et des récits enchanteurs.
-  </p>
-  <img src={Brand} alt="Brand Logo" class="w-64 h-auto mt-8" />
-</div>
-
-<!-- Section STICKY contenant la vidéo -->
-<section bind:this={section} class="relative h-[300vh] bg-gray-100">
+<section class="">
   <div
-    id="bloc-video"
-    class="sticky top-0 h-screen flex items-center justify-center"
+    class="w-full h-[100vh] flex items-center justify-center p-10 bg-[url('/assets/carte_zebi.png')] bg-size-[auto_800px] bg-no-repeat bg-center"
   >
-    <video
-      bind:this={video}
-      src="/video/OUTPUT.mp4"
-      muted
-      playsinline
-      preload="auto"
-      class="w-full h-full object-cover"
-    ></video>
+    <a href="/">
+      <img src={Logo} alt="" class="w-50 h-auto fixed top-10 left-10" />
+    </a>
   </div>
-
-  <div>
-    <h1 class="text-center font-bold font-title text-5xl relative z-999">
-      TEST TEST TEST TEST
-    </h1>
+  <div
+    class="p-10 w-1/3 mx-auto text-center bg-[url('/assets/button_home_alice.png')] bg-size-[200px] bg-center bg-no-repeat absolute bottom-50 left-100 transform -translate-x-1/2 transition-transform duration-500 hover:scale-105"
+  >
+    <h3 class="font-light text-3xl font-title text-center text-bg">
+      Alice au Pays <br /> des Merveilles
+    </h3>
+  </div>
+  <div
+    class="p-10 w-1/3 mx-auto text-center bg-[url('/assets/button_home_peter.png')] bg-size-[200px] bg-center bg-no-repeat absolute top-40 right-35 transform -translate-x-1/2 transition-transform duration-500 hover:scale-105"
+  >
+    <h3 class="font-light text-3xl font-title text-center text-bg">
+      Peter Pan
+    </h3>
+  </div>
+  <a href="/le-petit-chaperon-rouge">
+    <div
+      class="p-10 w-1/3 mx-auto text-center bg-[url('/assets/button_home_chap.png')] bg-size-[220px] bg-center bg-no-repeat absolute bottom-76 -right-2 transform -translate-x-1/2 transition-transform duration-500 hover:scale-105"
+    >
+      <h3 class="font-light text-3xl font-title text-center text-bg">
+        Le Petit <br /> Chaperon Rouge
+      </h3>
+    </div></a
+  >
+  <div
+    class="p-10 w-1/3 mx-auto text-center bg-[url('/assets/button_home_barbe.png')] bg-size-[200px] bg-center bg-no-repeat absolute top-70 left-135 transform -translate-x-1/2 transition-transform duration-500 hover:scale-105"
+  >
+    <h3 class="font-light text-3xl font-title text-center text-bg">
+      Barbe Bleue
+    </h3>
   </div>
 </section>
-
-<!-- Suite de page -->
-<div class="h-[300vh] flex items-center justify-center px-8">
-  <h2 class="text-center font-semibold font-title text-4xl">
-    Plongez dans un monde où l'imagination n'a pas de limites et où chaque
-    histoire vous transporte vers des horizons insoupçonnés !
-  </h2>
-</div>

@@ -3,13 +3,11 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Logo from "$lib/assets/logo-site.png";
   import { browser } from "$app/environment";
   import { Volume2, VolumeX } from "lucide-svelte";
   import IconDragon from "$lib/assets/Icon_dragon_gris.png";
   import endImage from "$lib/assets/FIN.png";
-  import Illustration from "$lib/assets/Encard_illustration.png";
-  import Production from "$lib/assets/Encard_production.png";
-  import Design from "$lib/assets/Encard_design.png";
   import Barbe from "$lib/assets/Encard_barbe.png";
   import Alice from "$lib/assets/Encard_alice.png";
   import Peter from "$lib/assets/Encard_peter.png";
@@ -19,6 +17,7 @@
   let video: HTMLVideoElement | null = null;
   let audio: HTMLAudioElement | null = null;
   let isPlaying = false;
+  let isSafari = false;
 
   function toggleAudio() {
     if (!audio) return;
@@ -33,7 +32,11 @@
   }
 
   onMount(() => {
-    if (!browser) return; // sécurité SSR
+    if (!browser) return;
+    // Détection basique de Safari (Mac + iOS)
+    isSafari =
+      /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ||
+      /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -90,34 +93,56 @@
 <!-- Section STICKY contenant la vidéo -->
 <section
   bind:this={section}
-  class="relative h-[100vh] bg-[url('$lib/assets/FIGMA_TEST.1.png')] bg-cover bg-center"
+  class="relative h-[1000vh] bg-[url('$lib/assets/FIGMA_TEST.1.png')] bg-cover bg-center"
 >
-  <!-- <div
+  <a href="/">
+    <img src={Logo} alt="" class="absolute top-0 right-0 w-30 z-999" />
+  </a>
+  <div
     id="bloc-video"
     class="sticky top-0 h-screen flex items-center justify-center"
   >
     <video
       bind:this={video}
-      src="/video/OUTPUT.mp4"
+      src="/video/output.mp4"
       muted
       playsinline
       preload="auto"
       class="w-full h-full object-cover"
     ></video>
-    <video
-      src="/video/neige_1.mov"
-      muted
-      playsinline
-      preload="auto"
-      autoplay
-      class="w-full h-full absolute z-99999 object-cover"
-    ></video>
+    <!-- 🎥 WebM pour Chrome, Edge, Firefox -->
+    {#if !isSafari}
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/video/output.webm" type="video/webm" />
+      </video>
+    {/if}
+
+    <!-- 🎬 MOV (H.264) pour Safari (Mac + iOS) -->
+    {#if isSafari}
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/video/input.mov" type="video/quicktime" />
+      </video>
+    {/if}
 
     <audio bind:this={audio} src="/sound/son.2.mp3" loop></audio>
 
     <button
       on:click={toggleAudio}
-      class="px-5 py-3 fixed bottom-0 right-0 rounded-xl bg-amber-400 m-6 text-white z-50 hover:bg-amber-500 transition"
+      class="px-5 py-3 fixed bottom-0 right-0 rounded-xl bg-red-500 m-6 text-white z-999 hover:bg-red-600 transition"
     >
       {#if isPlaying}
         <Volume2></Volume2>
@@ -125,7 +150,7 @@
         <VolumeX></VolumeX>
       {/if}
     </button>
-  </div> -->
+  </div>
   <div class="flex h-full items-center justify-center">
     <img src={endImage} alt="" class="w-150 h-auto" />
   </div>
@@ -140,7 +165,9 @@
       protéger.
     </h3>
   </div>
-  <div class="group flex items-center justify-center gap-6 cursor-pointer">
+  <div
+    class="group flex items-center justify-center gap-6 cursor-pointer z-999"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="22"
@@ -176,11 +203,14 @@
       />
     </svg>
   </div>
-  <div class="flex items-center justify-center pt-30 gap-10">
-    <div class="group flex items-center justify-center gap-6 cursor-pointer">
-      <div class="flex flex-col items-center justify-center">
-        <img src={Illustration} alt="" class="w-75 h-auto relative" />
-        <div class="absolute top-365">
+  <div class="w-full flex items-center justify-center pt-30">
+    <div
+      class="group h-auto flex items-stretch justify-center gap-20 cursor-pointer"
+    >
+      <div
+        class="w-full flex flex-col items-center justify-center bg-[url('/assets/Encard_illustration.png')] bg-cover bg-center p-10"
+      >
+        <div class="z-99">
           <h4 class="font-bold text-dark font-title text-4xl">Illustration</h4>
           <p
             class="text-center mt-2 font-regulard text-dark font-texte text-lg"
@@ -189,9 +219,10 @@
           </p>
         </div>
       </div>
-      <div class="flex flex-col items-center justify-center">
-        <img src={Production} alt="" class="w-75 h-auto relative" />
-        <div class="absolute top-365 items-center justify-center">
+      <div
+        class="w-full flex flex-col items-center justify-center bg-[url('/assets/Encard_design.png')] bg-cover bg-center p-10"
+      >
+        <div class="z-99">
           <h4 class="font-bold text-dark font-title text-4xl text-center">
             Production
           </h4>
@@ -202,9 +233,10 @@
           </p>
         </div>
       </div>
-      <div class="flex flex-col items-center justify-center">
-        <img src={Design} alt="" class="w-75 h-auto relative" />
-        <div class="absolute top-365 items-center justify-center">
+      <div
+        class="w-full flex flex-col items-center justify-center bg-[url('/assets/Encard_production.png')] bg-cover bg-center p-10"
+      >
+        <div class="z-99">
           <h4 class="font-bold text-dark font-title text-4xl text-center">
             Design <br /> graphique
           </h4>
