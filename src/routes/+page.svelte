@@ -1,10 +1,14 @@
 <script lang="ts">
   import Brand from "$lib/assets/brand-la-carte-des-contes.png";
   import { onMount } from "svelte";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger);
+  // Important: gsap and its ScrollTrigger plugin rely on the browser (window/document).
+  // Import and register them only on the client inside onMount to avoid SSR errors
+  // that would cause a 500 in production.
+  onMount(async () => {
+    const { gsap } = await import("gsap");
+    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    gsap.registerPlugin(ScrollTrigger);
 
   let section: HTMLElement | null = null;
   let video: HTMLVideoElement | null = null;
