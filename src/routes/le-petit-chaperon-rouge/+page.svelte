@@ -252,36 +252,48 @@
   <h2 class="font-bold text-red font-title text-5xl text-center mt-30">
     DÉCOUVRIR NOS CONTES
   </h2>
-  <div class="flex gap-10">
-    <div class="flex items-center justify-center mt-10">
-      <img src={Barbe} alt="" class="w-100 h-auto" />
-      <h3
-        class="font-regulard text-white font-title text-3xl text-center absolute mt-2"
-      >
-        Barbe Bleue
-      </h3>
+  <a href="/barbe-bleue">
+    <div
+      class="flex gap-10 transform transition-transform duration-500 hover:scale-105"
+    >
+      <div class="flex items-center justify-center mt-10">
+        <img src={Barbe} alt="" class="w-100 h-auto" />
+        <h3
+          class="font-regulard text-white font-title text-3xl text-center absolute mt-2"
+        >
+          Barbe Bleue
+        </h3>
+      </div>
     </div>
-  </div>
-  <div class="flex gap-10">
-    <div class="flex items-center justify-center mt-10">
-      <img src={Alice} alt="" class="w-100 h-auto" />
-      <h3
-        class="font-regulard text-white font-title text-3xl text-center absolute mt-2"
-      >
-        Alice au Pays des Merveilles
-      </h3>
+  </a>
+  <a href="/alice-au-pays-des-merveilles">
+    <div
+      class="flex gap-10 transform transition-transform duration-500 hover:scale-105"
+    >
+      <div class="flex items-center justify-center mt-10">
+        <img src={Alice} alt="" class="w-100 h-auto" />
+        <h3
+          class="font-regulard text-white font-title text-3xl text-center absolute mt-2"
+        >
+          Alice au Pays des Merveilles
+        </h3>
+      </div>
     </div>
-  </div>
-  <div class="flex gap-10">
-    <div class="flex items-center justify-center mt-10">
-      <img src={Peter} alt="" class="w-100 h-auto" />
-      <h3
-        class="font-regulard text-white font-title text-3xl text-center absolute mt-2"
-      >
-        Peter Pan
-      </h3>
+  </a>
+  <a href="/peter-pan">
+    <div
+      class="flex gap-10 transform transition-transform duration-500 hover:scale-105"
+    >
+      <div class="flex items-center justify-center mt-10">
+        <img src={Peter} alt="" class="w-100 h-auto" />
+        <h3
+          class="font-regulard text-white font-title text-3xl text-center absolute mt-2"
+        >
+          Peter Pan
+        </h3>
+      </div>
     </div>
-  </div>
+  </a>
   <div class="flex flex-col items-center justify-center mt-20 mb-10 gap-2">
     <h3 class="text-dark font-regulard text-4xl font-texte">
       Les contes sont faits pour être racontés.
