@@ -145,7 +145,7 @@
 
     <button
       on:click={toggleAudio}
-      class="px-5 py-3 fixed bottom-0 right-0 rounded-xl bg-red-500 m-6 text-white z-999 hover:bg-red-600 transition"
+      class="px-5 py-3 fixed bottom-0 right-0 rounded-xl bg-red-500 m-6 text-white z-999 hover:bg-red-600 transition cursor-pointer"
     >
       {#if isPlaying}
         <Volume2></Volume2>
