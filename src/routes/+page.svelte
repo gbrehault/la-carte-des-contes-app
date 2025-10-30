@@ -3,17 +3,6 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { browser } from "$app/environment";
-  import Carte from "$lib/assets/carte/carte.png";
-  import Montagne from "$lib/assets/carte/Montagne.png";
-  import Chateau from "$lib/assets/carte/Chateau_2.png";
-  import Arbres from "$lib/assets/carte/Arbres.png";
-  import Montagne2 from "$lib/assets/carte/Montagne_2.png";
-  import Dragon from "$lib/assets/carte/Dragon.png";
-  import Bateau from "$lib/assets/carte/Bateau.png";
-  import Dragon2 from "$lib/assets/carte/Dragon_2.png";
-  import Village from "$lib/assets/carte/Village.png";
-  import Chateau2 from "$lib/assets/carte/Chateau_1.png";
-  import Oiseau from "$lib/assets/carte/Oiseau.png";
 
   let logo: HTMLDivElement | null = null;
   let bgEl: HTMLDivElement | null = null;

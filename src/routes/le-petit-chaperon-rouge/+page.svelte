@@ -66,8 +66,10 @@
           duration: 1, // adapte selon ton scroll total
           ease: "none",
           onUpdate: () => {
-            const p = st.progress; // 0..1
-            video!.currentTime = p * dur;
+            if (video) {
+              const p = st.progress; // 0..1
+              video!.currentTime = Math.min(p * dur, dur - 0.06666666);
+            }
           },
         },
         0
@@ -93,7 +95,8 @@
 <!-- Section STICKY contenant la vidéo -->
 <section
   bind:this={section}
-  class="relative h-[1000vh] bg-[url('$lib/assets/FIGMA_TEST.1.png')] bg-cover bg-center"
+  class="relative h-[1000vh] bg-cover bg-center
+"
 >
   <a href="/">
     <img src={Logo} alt="" class="top-0 left-0 w-30 z-999 fixed" />
@@ -104,7 +107,7 @@
   >
     <video
       bind:this={video}
-      src="/video/output.mp4"
+      src="/video/OUTPUT.mp4"
       muted
       playsinline
       preload="auto"
@@ -120,7 +123,7 @@
         preload="auto"
         class="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/video/neige.webm" type="video/webm" />
+        <source src="/video/neige-final.webm" type="video/webm" />
       </video>
     {/if}
 
@@ -134,7 +137,7 @@
         preload="auto"
         class="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/video/neige.mov" type="video/quicktime" />
+        <source src="/video/neige-final.mov" type="video/quicktime" />
       </video>
     {/if}
 
