@@ -185,7 +185,7 @@
     </svg>
     <a
       href="/"
-      class="font-title font-bold text-3xl pt-2 text-[#D92626] transition-colors duration-300 group-hover:text-dark"
+      class="font-title font-bold text-3xl pt-2 text-peter-light transition-colors duration-300 group-hover:text-peter-dark"
       >RETOURNEZ À LA CARTE</a
     >
     <svg
